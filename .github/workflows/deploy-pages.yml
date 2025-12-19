@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Vite React to GitHub Pages
 
 on:
   push:
@@ -33,9 +33,9 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # 重要：用 Secrets 注入，避免依賴 .env.local（CI 上不存在）
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
 
-      # 將 dist/ 打包成 Pages artifact
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

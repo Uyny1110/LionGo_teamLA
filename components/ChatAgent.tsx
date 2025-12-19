@@ -9,6 +9,7 @@ interface ChatAgentProps {
 }
 
 const ChatAgent: React.FC<ChatAgentProps> = ({ tripContext, itineraryItems }) => {
+  console.log('Trip Context in ChatAgent:', tripContext);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -66,7 +67,7 @@ const ChatAgent: React.FC<ChatAgentProps> = ({ tripContext, itineraryItems }) =>
   };
 
   return (
-    <div className="fixed bottom-24 right-4 z-50">
+    <div className="fixed bottom-24 right-4 z-50" id="chat-agent-container">
       {isOpen && (
         <div className="bg-white rounded-2xl shadow-2xl w-80 sm:w-96 mb-4 flex flex-col border border-gray-200 overflow-hidden" style={{ height: '500px' }}>
           {/* Header */}
@@ -121,16 +122,14 @@ const ChatAgent: React.FC<ChatAgentProps> = ({ tripContext, itineraryItems }) =>
         </div>
       )}
 
-      {/* <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center"
-      >
-        {isOpen ? (
-          <span className="font-bold text-xl h-6 w-6 flex items-center justify-center">&times;</span>
-        ) : (
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center"
+        >
           <Icons.Bot className="w-6 h-6" />
-        )}
-      </button> */}
+        </button>
+      )}
     </div>
   );
 };

@@ -2,7 +2,9 @@ import { GoogleGenAI } from "@google/genai";
 import { ChatMessage } from "../types";
 
 // Always initialize with the named parameter apiKey from process.env.API_KEY
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+const ai = new GoogleGenAI({ apiKey });
 
 export const generateAIResponse = async (
   history: ChatMessage[], 
