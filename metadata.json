@@ -1,0 +1,8 @@
+{
+  "name": "Lion Smart Itinerary Manager",
+  "description": "A Phygital B2C travel planning application for Lion Travel, featuring AI assistance, collaborative editing, and O2O sales handoff.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}
