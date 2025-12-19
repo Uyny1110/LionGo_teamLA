@@ -32,6 +32,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       # 將 dist/ 打包成 Pages artifact
       - name: Upload Pages artifact
